@@ -14,7 +14,8 @@ const ROUTES = {
             handler: (req, res) => res.send(`<ul>${HTMX_KNOWLEDGE.map(item => `<li>${item}</li>`).join('')}</ul>`)
         }
     ],
-    post: []
+    post: [],
+    delete: []
 };
 
 export default ROUTES;

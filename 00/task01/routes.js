@@ -28,7 +28,8 @@ const ROUTES = {
                 res.send(renderList());
             }
         }
-    ]
+    ],
+    delete: []
 };
 
 export default ROUTES;

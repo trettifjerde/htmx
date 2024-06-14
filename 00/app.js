@@ -1,5 +1,5 @@
 import express from 'express';
-import ROUTES from './task01/routes.js';
+import ROUTES from './task02/routes.js';
 
 const app = express();
 
@@ -12,5 +12,8 @@ for (const {path, handler} of ROUTES.get)
 
 for (const {path, handler} of ROUTES.post) 
   app.post(path, handler);
+
+for (const {path, handler} of ROUTES.delete)
+  app.delete(path, handler);
 
 app.listen(3000);

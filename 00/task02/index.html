@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Learn HTMX</title>
+      <link rel="stylesheet" href="/task02/main.css" />
+      <script src="/htmx.js" defer></script>
+    </head>
+    <body>
+      <main>
+        <h1>Manage your course goals</h1>
+        <section>
+          <form id="goal-form">
+            <div>
+              <label htmlFor="goal">Goal</label>
+              <input type="text" id="goal" name="goal" />
+            </div>
+            <button type="submit">Add goal</button>
+          </form>
+        </section>
+        <section>
+          %%GOAL_LIST%%
+        </section>
+      </main>
+    </body>
+  </html>

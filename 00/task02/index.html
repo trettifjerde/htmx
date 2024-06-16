@@ -11,12 +11,19 @@
       <main>
         <h1>Manage your course goals</h1>
         <section>
-          <form hx-post="/goals" hx-target="#goals" hx-swap="beforeend" id="goal-form">
+          <form 
+            id="goal-form"
+            hx-post="/goals" 
+            hx-target="#goals" 
+            hx-swap="beforeend"
+            hx-on::after-request="this.reset()"
+            hx-disabled-elt="button"
+          >
             <div>
               <label htmlFor="goal">Goal</label>
               <input type="text" id="goal" name="goal" />
             </div>
-            <button type="submit">Add goal</button>
+            <button id="submit-btn" type="submit">Add goal</button>
           </form>
         </section>
         <section>

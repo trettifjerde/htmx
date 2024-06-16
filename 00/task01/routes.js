@@ -1,4 +1,4 @@
-import { HTMX_KNOWLEDGE } from "../data/htmx-info.js";
+import { HTMX_KNOWLEDGE } from "../data.js";
 import { getIndexPage } from "../utils/helpers.js";
 
 const indexPage = getIndexPage('task01');

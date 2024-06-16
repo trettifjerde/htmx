@@ -6,7 +6,14 @@ const indexPage = getIndexPage('task02');
 function renderGoal({goal, id}) {
   return `<li>
     <span>${goal}</span>
-    <button hx-delete="/goals/${id}" hx-target="closest li">Remove</button>
+    <button 
+      hx-delete="/goals/${id}" 
+      hx-target="closest li"
+      hx-confirm="Are you sure?"
+      hx-disabled-elt="this"
+    >
+      Remove
+    </button>
   </li>`
 }
 
@@ -35,7 +42,9 @@ const POST = [
       if (goal) {
         const id = new Date().getTime().toString();
         courseGoals.push({goal, id});
-        res.send(renderGoal({goal, id}));
+        setTimeout(() => 
+          res.send(renderGoal({goal, id})), 
+        1000);
       }
       else
         res.send('');
@@ -50,7 +59,7 @@ const DELETE = [
       const id = req.params.id;
       const i = courseGoals.findIndex(goal => goal.id === id);
       courseGoals.splice(i, 1);
-      res.send();
+      setTimeout(() => res.send(), 1000);
     }
   }
 ];

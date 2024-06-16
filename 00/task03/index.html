@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Interesting Locations</title>
+  <link rel="stylesheet" href="/task03/main.css" />
+  <link rel="icon" href="/task03/logo.png" />
+  <script src="/htmx.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <img src="/task03/logo.png" alt="Stylized globe" />
+    <h1>PlacePicker</h1>
+    <p>
+      Create your personal collection of places you would like to visit or
+      you have visited.
+    </p>
+  </header>
+  <main>
+    <section id="interesting-section" class="locations-category">
+      <h2>My Dream Locations</h2>
+      <ul id="interesting-locations" class="locations">
+        %%INTERESTING_LOCATIONS%%
+      </ul>
+    </section>
+
+    <section class="locations-category">
+      <h2>Available Locations</h2>
+      <ul id="available-locations" class="locations">
+        %%AVAILABLE_LOCATIONS%%
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>

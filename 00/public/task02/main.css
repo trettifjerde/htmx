@@ -72,6 +72,11 @@ form button:active {
   background-color: #4c0899;
 }
 
+form button:disabled {
+  background-color: #604f74;
+  color: lightgray;
+}
+
 #goals {
   margin: 2rem 0;
 }
@@ -104,4 +109,8 @@ form button:active {
 #goals li button:hover,
 #goals li button:active {
   background-color: #f6459d;
+}
+
+#goals li button:disabled {
+  background-color: rgb(177, 101, 139);
 }

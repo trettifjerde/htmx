@@ -1,7 +1,7 @@
-import { getIndexPage } from '../utils/helpers.js';
+import { getPage } from '../utils/helpers.js';
 
 const courseGoals = [];
-const indexPage = getIndexPage('task02');
+const indexPage = getPage('task02', 'index.html');
 
 function renderGoal({goal, id}) {
   return `<li>

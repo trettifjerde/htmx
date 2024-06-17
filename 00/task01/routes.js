@@ -1,7 +1,7 @@
-import { HTMX_KNOWLEDGE } from "../data.js";
-import { getIndexPage } from "../utils/helpers.js";
+import { HTMX_KNOWLEDGE } from "./data.js";
+import { getPage } from "../utils/helpers.js";
 
-const indexPage = getIndexPage('task01');
+const indexPage = getPage('task01', 'index.html');
 
 function renderIndex() {
     return indexPage.replace('%%LIST%%', renderList())
@@ -21,7 +21,6 @@ const ROUTES = {
             path: '/note',
             handler: (req, res) => {
                 const data = req.body;
-                console.log(req.body);
                 if (data.note)
                     HTMX_KNOWLEDGE.unshift(data.note);
 

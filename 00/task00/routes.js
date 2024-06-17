@@ -1,7 +1,7 @@
 import { HTMX_KNOWLEDGE } from "./data.js";
-import { getIndexPage } from "../utils/helpers.js";
+import { getPage } from "../utils/helpers.js";
 
-const indexPage = getIndexPage('task00');
+const indexPage = getPage('task00', 'index.html');
 
 const ROUTES = {
     get: [

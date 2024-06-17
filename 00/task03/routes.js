@@ -1,8 +1,8 @@
-import { getIndexPage } from "../utils/helpers.js"
+import { getPage } from "../utils/helpers.js"
 import { AVAILABLE_LOCATIONS } from "./data.js";
 import { renderLocation, renderLocations } from "./renderers.js";
 
-const indexPage = getIndexPage('task03');
+const indexPage = getPage('task03', 'index.html');
 
 const INTERESTING_LOCATIONS = [];
 

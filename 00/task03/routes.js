@@ -1,10 +1,29 @@
 import { getIndexPage } from "../utils/helpers.js"
 import { AVAILABLE_LOCATIONS } from "./data.js";
-import { renderAvailableLocation, renderInterestingLocation, renderLocations } from "./renderers.js";
+import { renderLocation, renderLocations } from "./renderers.js";
 
 const indexPage = getIndexPage('task03');
 
 const INTERESTING_LOCATIONS = [];
+
+export function getSuggestedLocations() {
+    const availableLocations = AVAILABLE_LOCATIONS.filter(
+      (location) => !INTERESTING_LOCATIONS.includes(location)
+    );
+  
+    if (availableLocations.length < 2) return availableLocations;
+  
+    const suggestedLocation1 = availableLocations.splice(
+      Math.floor(Math.random() * availableLocations.length),
+      1
+    )[0];
+    const suggestedLocation2 = availableLocations.splice(
+      Math.floor(Math.random() * availableLocations.length),
+      1
+    )[0];
+  
+    return [suggestedLocation1, suggestedLocation2];
+  }
 
 const GET = [
     {
@@ -12,10 +31,18 @@ const GET = [
         handler: (req, res) => {
             const available = AVAILABLE_LOCATIONS.filter(loc => !INTERESTING_LOCATIONS.includes(loc));
             const index = indexPage
-                .replace('%%INTERESTING_LOCATIONS%%', renderLocations(INTERESTING_LOCATIONS, false))
+                .replace('%%SUGGESTED_LOCATIONS%%', renderLocations(getSuggestedLocations(), 's'))
+                .replace('%%INTERESTING_LOCATIONS%%', renderLocations(INTERESTING_LOCATIONS, 'i'))
                 .replace('%%AVAILABLE_LOCATIONS%%', renderLocations(available));
 
             res.send(index);
+        },
+    },
+    {
+        path: '/suggestions',
+        handler: (req, res) => {
+            const suggestions = renderLocations(getSuggestedLocations(), 's');
+            res.send(suggestions)
         }
     }
 ];
@@ -28,7 +55,12 @@ const POST = [
 
             INTERESTING_LOCATIONS.push(location);
 
-            res.send(renderInterestingLocation(location));
+            res.send(`
+                ${renderLocation(location, 'i')}
+                <ul hx-swap-oob="true" id="suggested-locations" class="locations">
+                    ${renderLocations(getSuggestedLocations(), 's')}
+                </ul>
+            `);
         }
     }
 ];
@@ -41,7 +73,7 @@ const DELETE = [{
         );
         const [location] = INTERESTING_LOCATIONS.splice(locationIndex, 1);
 
-        res.send(renderAvailableLocation(location));
+        res.send(renderLocation(location));
     }
 }];
 

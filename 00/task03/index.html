@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/task03/main.css" />
   <link rel="icon" href="/task03/logo.png" />
   <script src="/htmx.js" defer></script>
+  <script src="/task03/main.js" defer></script>
 </head>
 
 <body>
@@ -18,6 +19,15 @@
     </p>
   </header>
   <main>
+    <section id="suggested-section" class="locations-category">
+      <h2>Suggested Locations</h2>
+      <ul id="suggested-locations" class="locations" 
+        hx-get="/suggestions" hx-trigger="every 5s"
+      >
+        %%SUGGESTED_LOCATIONS%%
+      </ul>
+    </section>
+
     <section id="interesting-section" class="locations-category">
       <h2>My Dream Locations</h2>
       <ul id="interesting-locations" class="locations">

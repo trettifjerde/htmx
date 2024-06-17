@@ -26,7 +26,15 @@ const GET = [
     }
 ];
 
-const POST = [];
+const POST = [
+    {
+        path: '/cart',
+        handler: (req, res) => {
+            // form handling
+            res.redirect('/');
+        }
+    }
+];
 
 const DELETE = [];
 
